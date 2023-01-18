@@ -28,6 +28,18 @@ User.init (
                 len: [7]
             },
         },
+    },
+    {
+        hooks: {
+            beforeCreate: async() => {
+
+            },
+        },
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'user',
     }
 );
 
