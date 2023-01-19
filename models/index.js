@@ -3,7 +3,7 @@ const Post = require('./Post');
 const Comment = require('./Comment');
 
 User.hasMany(Post, {
-    
+
 });
 
 Post.hasMany(Comment, {
