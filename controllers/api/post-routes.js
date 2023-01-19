@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
        const postData = await Post.findAll({ 
             include: [{ model: User }, { model: Comment }],
         });
-        res.status(200).json(postData)
+        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -32,8 +32,9 @@ router.post('/', async (req, res) => {
         const postData = await Post.create({
             title:req.body.title,
             content:req.body.content,
-            userId:req.session.user.id
+            user_id:req.session.user_id
         })
+        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -45,7 +46,8 @@ router.put('./:id', async (req, res) => {
             where: {
                 id: req.params.id,
             },
-        })
+        });
+        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -57,7 +59,8 @@ router.delete('./:id', async (req, res) => {
             where: {
                 id: req.params.id,
             },
-        })
+        });
+        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     } 
