@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('./:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.id, {
             include: [{ model: User }, { model: Post }],
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('./:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const commentData = await Comment.update(req.body, {
             where: {
@@ -49,7 +49,7 @@ router.put('./:id', async (req, res) => {
     }
 });
 
-router.delete('./:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const commentData = await Comment.destroy({
             where: {
