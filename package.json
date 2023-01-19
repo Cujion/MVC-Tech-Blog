@@ -10,7 +10,7 @@
     "db:sync": "node db/sync",
     "env:copy": "cp .env.EXAMPLE .env",
     "setup": "npm i && npm run env:copy && npm run db:seed && npm run db:sync && nodemon",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -23,14 +23,13 @@
     "nodemon": "^2.0.3"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
-    "connect-session-sequelize": "^7.0.4",
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^6.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "express-session": "^1.17.1",
-    "handlebars": "^4.7.6",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "mysql2": "^2.0.1",
+    "sequelize": "^5.21.2"
 }
 }
