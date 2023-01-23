@@ -1,1 +1,13 @@
-<h1>The Tech Blog</h1>
+{{#each posts}}
+<div class="card w-90 mb-3">
+    <a href="/api/post"></a>
+    <h3 class="card-header">{{title}}</h3>
+    <div class="card-body">
+        <p class="post-content">{{content}}</p>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-between">
+        <i><button id="add-comment" class="btn btn-success btn fas fa-sharp fa-solid fa-plus" type="button"> Add Comment</button></i>
+        <h6 class="footer-content">Posted by: {{user.username}} on {{format_date createdAt}}</h6>
+    </div>
+</div>
+{{/each}}

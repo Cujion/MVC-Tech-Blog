@@ -1,19 +1,21 @@
-<div class="card">
-  <div class="card-header">
+<div class="row card">
+  <div class="text-center card-header">
     <h2>Sign Up</h2>
   </div>
   <div id="signup" role="tabpanel">
-    <form id="signup-form" class="card-body">
-      <div>
+    <form id="signup-form" class="card-body justify-content-center">
+      <div class="text-center">
         <label for="username-input-signup">Username</label>
         <input type="text" id="username-input-signup" />
       </div>
-      <div>
+      <div class="text-center my-2">
         <label for="password-input-signup">Password</label>
         <input type="password" id="password-input-signup" />
       </div>
-      <button type="submit" id="signup-btn" class="btn" >Signup!</button>
-      <a href="/login">Login instead</a>
+      <div class="row d-flex justify-content-center mt-2">
+        <button type="submit" id="signup-btn" class="btn btn-dark btn-sm border-primary ml-4">Signup!</button>
+        <button class="btn-dark btn-sm border-primary ml-4"><a href="/login">Login instead</a></button>
+      </div>
     </form>
   </div>
 </div>

@@ -1,0 +1,17 @@
+{{#each posts}}
+<div class="card w-90 mb-3">
+    <a href="/api/post"></a>
+    <h3 class="card-header">{{title}}</h3>
+    <div class="card-body">
+        <p class="post-content">{{content}}</p>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-end">
+        <h6 class="footer-content">Created by you and posted on: {{format_date createdAt}}</h6>
+    </div>
+</div>
+{{/each}}
+<footer>
+    <div class="d-flex justify-content-center">
+        <i><a href="/post" id="create-post" class="btn btn-success btn-lg fas fa-sharp fa-solid fa-plus" type="button"> Create Post</a></i>
+    </div>
+</footer>

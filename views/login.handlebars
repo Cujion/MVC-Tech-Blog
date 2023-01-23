@@ -1,18 +1,20 @@
-<div class="card">
-  <div class="card-header">
+<div class="row card">
+  <div class="text-center card-header">
     <h2>Login</h2>
   </div>
-  <form id="login-form" class="card-body">
-    <div>
+  <form id="login-form" class="card-body justify-content-center">
+    <div class="text-center">
       <label for="username-input-login">Username</label>
       <input type="text" id="username-input-login" />
     </div>
-    <div>
+    <div class="text-center my-2">
       <label for="password-input-login" class="form-label">Password</label>
       <input type="password" id="password-input-login" />
     </div>
-    <button type="submit" id="login-btn" class="btn">Login!</button>
-    <a type="button" href="/signup">Sign up instead</a>
+    <div class="row d-flex justify-content-center mt-2">
+      <button type="submit" id="login-btn" class="btn-dark btn-sm border-primary ml-4">Login!</button>
+      <button class="btn-dark btn-sm border-primary ml-4"><a href="/signup">Sign up instead</a></button>
+    </div>
   </form>
 </div>
 
