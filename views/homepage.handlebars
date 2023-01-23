@@ -6,7 +6,7 @@
         <p class="post-content">{{content}}</p>
     </div>
     <div class="card-footer text-muted d-flex justify-content-between">
-        <i><button id="add-comment" class="btn btn-success btn fas fa-sharp fa-solid fa-plus" type="button"> Add Comment</button></i>
+        <i><a href="/comment" id="add-comment" class="btn btn-success btn fas fa-sharp fa-solid fa-plus" type="submit"> Add Comment</a></i>
         <h6 class="footer-content">Posted by: {{user.username}} on {{format_date createdAt}}</h6>
     </div>
 </div>

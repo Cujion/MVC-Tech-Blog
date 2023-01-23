@@ -40,4 +40,8 @@ router.get('/post', (req, res) => {
   res.render('create-post')
 })
 
+router.get('/comment', (req, res) => {
+  res.render('add-comment')
+})
+
 module.exports = router;

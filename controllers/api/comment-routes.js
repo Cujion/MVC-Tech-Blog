@@ -6,7 +6,13 @@ router.get('/', async (req, res) => {
         const commentData = await Comment.findAll({
             include: [{ model: User }, { model: Post }],
         });
-        res.status(200).json(commentData);
+        // res.status(200).json(commentData);
+        const comments = commentData.map((comment) => comment.get({ plain: true })
+        );
+        res.render('homepage', {
+            comments,
+            loggedIn: req.session.loggedIn,
+        })
     } catch (err) {
         res.status(500).json(err);
     }
@@ -31,7 +37,7 @@ router.post('/', async (req, res) => {
     try {
         const commentData = await Comment.create({
             comment_content: req.body.comment_content,
-            user_id: req.body.user_id,
+            user_id: req.body.userId,
             post_id: req.body.post_id,
         });
         res.status(200).json(commentData);
