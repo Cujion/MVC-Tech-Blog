@@ -1,8 +1,7 @@
 <section>
-    <button class="btn-light btn-lg mx-2 border-primary"><a href="/dashboard">Dashboard</a></button>
     <div class="card">
         <h2 class="text-center mt-2">Create a New Post</h2>
-        <form>
+        <form id="create-a-post">
             <div class="mb-3">
                 <input type="text" class="form-control" id="post-title" placeholder="Insert Post Title Here">
             </div>
@@ -12,9 +11,11 @@
             </div>
             <div class="d-flex justify-content-center">
                 <i><button id="add-post" class="btn btn-success btn-lg fas fa-sharp fa-solid fa-plus mb-2"
-                        type="button"> Add
+                        type="submit"> Add
                         Post</button></i>
             </div>
         </form>
     </div>
 </section>
+
+<script src="/js/dashboard.js"></script>

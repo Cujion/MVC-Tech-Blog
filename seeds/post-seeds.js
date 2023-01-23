@@ -15,7 +15,7 @@ const postData = [
        title: 'new post 3',
        content: 'this is a new post 3',
        user_id: 2 
-    }
+    },
 ];
 
 const seedPost = () => Post.bulkCreate(postData);
