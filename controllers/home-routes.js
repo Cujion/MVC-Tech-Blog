@@ -40,8 +40,20 @@ router.get('/post', (req, res) => {
   res.render('create-post')
 })
 
-router.get('/comment', (req, res) => {
-  res.render('add-comment')
+router.get('/update', async (req, res) => {
+  try {
+    const postData = await Post.findByPk({
+      include: [User]
+    });
+        const posts = postData.map((post) => post.get({ plain: true }));
+      res.render('dashboard', {
+        layout: 'mutation-post',
+        posts,
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  // res.render('mutation-post')
 })
 
 module.exports = router;

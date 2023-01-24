@@ -1,0 +1,27 @@
+
+<section>
+    <div class="card">
+        <h2 class="text-center mt-2">Update Post</h2>
+        <form id="mutate-a-post">
+            <div class="mb-3">
+                <input type="hidden" class="form-control" name="post-id" value="{{posts.id}}">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="post-title" value="{{posts.title}}" row="4"
+                    placeholder="Insert new title">
+            </div>
+            <div class="mb-3">
+                <textarea type="text" class="form-control" name="post-content"  value="{{posts.content}}" row="4"
+                    placeholder="Insert new content"></textarea>
+            </div>
+            <div class="d-flex justify-content-center">
+                <i><button id="update-post" class="btn btn-warning btn-lg fas fa-solid fa-pen mb-2"
+                        type="submit"> Update
+                        Post</button></i>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<script src="/js/mutation.js"></script>

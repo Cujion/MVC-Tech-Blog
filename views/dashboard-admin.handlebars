@@ -4,14 +4,23 @@
     <h3 class="card-header">{{title}}</h3>
     <div class="card-body">
         <p class="post-content">{{content}}</p>
-    </div>
-    <div class="card-footer text-muted d-flex justify-content-end">
-        <h6 class="footer-content">Created by you and posted on: {{format_date createdAt}}</h6>
+        <div class="card-footer text-muted d-flex justify-content-between">
+            <div class="d-flex justify-content-between">
+                <i><a href="/api/post/{{id}}" id="delete-post" class="btn btn-danger btn-lg fas fa-solid fa-trash"
+                        type="submit"> Delete Post</a></i>
+            </div>
+            <div class="d-flex justify-content-center">
+                <i><a href="/update" id="update-post" class="btn btn-warning btn-lg fas fa-sharp fa-pen"
+                        type="submit"> Update Post</a></i>
+            </div>
+            <h6 class="footer-content">Created by you and posted on: {{format_date createdAt}}</h6>
+        </div>
     </div>
 </div>
 {{/each}}
 <footer>
     <div class="d-flex justify-content-center">
-        <i><a href="/post{{id}}" id="create-post" class="btn btn-success btn-lg fas fa-sharp fa-solid fa-plus" type="submit"> Create Post</a></i>
+        <i><a href="/post{{id}}" id="create-post" class="btn btn-success btn-lg fas fa-sharp fa-solid fa-plus"
+                type="submit"> Create Post</a></i>
     </div>
 </footer>
