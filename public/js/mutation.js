@@ -1,12 +1,12 @@
-// const post_id = window.location.toString().split('/')[
-//     window.location.toString().split('/').length - 1
-// ];
+const post_id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+];
 
 const updatePost = async function (event) {
     event.preventDefault();
-
-    const postTitleEl = document.querySelector('input[name="post-title"]');
-    const postBodyEl = document.querySelector('input[name="post-content"]');
+    
+    const postTitleEl = document.querySelector('#post-title');
+    const postBodyEl = document.querySelector('#post-content');
 
     const response = await fetch(`/api/post/${post_id}`, {
         method: 'PUT',
@@ -24,20 +24,21 @@ const updatePost = async function (event) {
     }
 };
 
-async function deletePost() {
+async function deletePost(event) {
+    event.stopPropagation();
     const postId = document.querySelector('input[name="post-id"]').value;
     const response = await fetch(`/api/post/${postId}`, {
         method: 'DELETE'
     });
 
     if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/');
     } else {
-        alert('Unable to delete');
+        alert('Failed to delete blog post');
     }
 }
 
-document.querySelector('#update-post')
+document.querySelector('#mutate-a-post')
     .addEventListener('submit', updatePost);
 
 document.querySelector('#delete-post')
