@@ -6,7 +6,7 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [User]
+      include: [{ model: User }, { model: Comment }]
     });
         const posts = postData.map((post) => post.get({ plain: true }));
       res.render('homepage', {
@@ -38,22 +38,6 @@ router.get('/signup', (req, res) => {
 
 router.get('/post', (req, res) => {
   res.render('create-post')
-})
-
-router.get('/update', async (req, res) => {
-  try {
-    const postData = await Post.findByPk({
-      include: [User]
-    });
-        const posts = postData.map((post) => post.get({ plain: true }));
-      res.render('dashboard', {
-        layout: 'mutation-post',
-        posts,
-    })
-  } catch (err) {
-    res.status(500).json(err);
-  }
-  // res.render('mutation-post')
 })
 
 module.exports = router;

@@ -1,19 +1,18 @@
-const postId = document.querySelector('input[name="post-id"]').value;
-console.log('POSTID', postId)
+const post_id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+];
 
 const updatePost = async function (event) {
     event.preventDefault();
 
-    const postTitleEl = document.querySelector('input[name="post-title"]').value;
-    const postBodyEl = document.querySelector('input[name="post-content"]').value;
-    console.log('POSTTITLE', postTitleEl)
-    console.log('POSTCONTENT', postBodyEl)
+    const postTitleEl = document.querySelector('input[name="post-title"]');
+    const postBodyEl = document.querySelector('input[name="post-content"]');
 
-    const response = await fetch(`/api/post/${postId}`, {
+    const response = await fetch(`/api/post/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({
-            postTitleEl,
-            postBodyEl
+            title: postTitleEl.value,
+            content: postBodyEl.value
         }),
         headers: { 'Content-Type': 'application/json' }
     });
@@ -25,18 +24,21 @@ const updatePost = async function (event) {
     }
 };
 
-    const deletePost = async function () {
-        await fetch(`/api/post/${postId}`, {
-            method: 'DELETE'
-        })
-        if(response.ok) {
-            document.location.replace('/dashboard');
-        } else {
-            alert('Failed to delete blog post');
-        }
-};
+async function deletePost(event) {
+    event.preventDefault();
 
-document.querySelector('#update-a-post')
+    const response = await fetch(`/api/posts/${post_id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert('Unable to delete');
+    }
+}
+
+document.querySelector('#update-post')
     .addEventListener('submit', updatePost);
 
 document.querySelector('#delete-post')
