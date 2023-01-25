@@ -1,3 +1,4 @@
+<div class="card-wrapper">
 {{#each posts}}
 <div class="card w-90 mb-3">
     <input type="hidden" name="post-id" value="{{id}}">
@@ -6,19 +7,19 @@
         <p class="post-content">{{content}}</p>
     </div>
     <div class="card-footer text-muted d-flex justify-content-between">
-        <i><button id="delete-post" class="btn btn-danger btn-lg fas fa-solid fa-trash" type="submit"> Delete
+        <i><button id="delete-post" class="btn btn-danger btn-lg fas fa-solid fa-trash" type="submit" data-id="{{id}}"> Delete
                 Post</button></i>
-        <i><a href="/dashboard/edit/{{id}}" id="update-post" class="btn btn-warning btn-lg fas fa-sharp fa-pen" type="submit">
+        <i><a href="/dashboard/edit/{{id}}" id="edit-post" class="btn btn-warning btn-lg fas fa-sharp fa-pen" type="submit">
                 Update Post</a></i>
         <h6 class="footer-content">Created by you and posted on: {{format_date createdAt}}</h6>
     </div>
 </div>
 {{/each}}
+<script src="/js/mutation.js"></script>
+</div>
 <footer>
     <div class="d-flex justify-content-center">
         <i><a href="/post" id="create-post" class="btn btn-success btn-lg fas fa-sharp fa-solid fa-plus"
                 type="submit"> Create Post</a></i>
     </div>
 </footer>
-
-<script src="/js/mutation.js"></script>

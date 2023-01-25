@@ -1,7 +1,6 @@
+const cardWrapper = document.querySelector('.card-wrapper');
 
-const updatePost = async function (event) {
-    event.preventDefault();
-    
+const updatePost = async function () {
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
@@ -24,9 +23,8 @@ const updatePost = async function (event) {
     }
 };
 
-async function deletePost() {
-    console.log('INSIDE DELETE POST')
-    const postId = document.querySelector('input[name="post-id"]').value;
+async function deletePost(e) {
+    const postId = e.target.getAttribute('data-id');
     const response = await fetch(`/api/post/${postId}`, {
         method: 'DELETE'
     });
@@ -38,8 +36,12 @@ async function deletePost() {
     }
 };
 
-document.querySelector('#mutate-post')
-    .addEventListener('submit', updatePost);
-
-document.querySelector('#delete-post')
-    .addEventListener('click', deletePost);
+cardWrapper.addEventListener('click', e=>{
+    if(e.target.matches('#delete-post')){
+        deletePost(e)
+    }
+    else if(e.target.matches('#update-post')){
+        e.preventDefault();
+        updatePost();
+    }
+})
