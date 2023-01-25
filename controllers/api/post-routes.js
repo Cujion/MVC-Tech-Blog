@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }],
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.create({
             title:req.body.title,
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.update(req.body, {
             where: {
@@ -65,7 +65,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
       const postData = await Post.destroy({ where: { id: req.params.id }});
       res.json(postData);

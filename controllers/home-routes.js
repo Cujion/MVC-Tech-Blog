@@ -38,6 +38,6 @@ router.get('/signup', (req, res) => {
 
 router.get('/post', (req, res) => {
   res.render('create-post')
-})
+});
 
 module.exports = router;

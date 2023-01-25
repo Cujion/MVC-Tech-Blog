@@ -1,10 +1,10 @@
-const post_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-];
 
 const updatePost = async function (event) {
     event.preventDefault();
     
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
     const postTitleEl = document.querySelector('#post-title');
     const postBodyEl = document.querySelector('#post-content');
 
@@ -24,8 +24,8 @@ const updatePost = async function (event) {
     }
 };
 
-async function deletePost(event) {
-    event.stopPropagation();
+async function deletePost() {
+    console.log('INSIDE DELETE POST')
     const postId = document.querySelector('input[name="post-id"]').value;
     const response = await fetch(`/api/post/${postId}`, {
         method: 'DELETE'
@@ -36,10 +36,10 @@ async function deletePost(event) {
     } else {
         alert('Failed to delete blog post');
     }
-}
+};
 
-document.querySelector('#mutate-a-post')
+document.querySelector('#mutate-post')
     .addEventListener('submit', updatePost);
 
 document.querySelector('#delete-post')
-    .addEventListener('click', deletePost)
+    .addEventListener('click', deletePost);

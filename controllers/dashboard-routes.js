@@ -22,7 +22,7 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
     if (postData) {
@@ -30,11 +30,52 @@ router.get('/edit/:id', async (req, res) => {
       res.render('mutation-post', {
         layout: 'dashboard',
         post,
-        loggedIn: true
+        loggedIn: req.session.loggedIn
       });
     } else {
       res.status(404).end();
     }
+  } catch (err) {
+    res.redirect('login');
+  }
+});
+
+router.get('/add/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+    if (postData) {
+      const post = postData.get({ plain: true });
+      res.render('add-comment', {
+        layout: 'dashboard',
+        post,
+        loggedIn: req.session.loggedIn
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.redirect('login');
+  }
+});
+
+router.get('/view', withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({
+      include: [{ model: User }, { model: Post }],
+      // where: {
+      //   post_id: 
+      // }
+    });
+    // if (commentData) {
+      const comment = commentData.get({ plain: true });
+      res.render('view-comment', {
+        layout: 'dashboard',
+        comment,
+        loggedIn: req.session.loggedIn
+      });
+    // } else {
+    //   res.status(404).end();
+    // }
   } catch (err) {
     res.redirect('login');
   }
