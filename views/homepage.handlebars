@@ -1,6 +1,7 @@
 {{#each posts}}
 <div class="card w-90 mb-3">
     <a href="/api/post"></a>
+    <input type="hidden" class="form-control" name="post-id" value="{{id}}">
     <h3 class="card-header">{{title}}</h3>
     <div class="card-body">
         <p class="post-content">{{content}}</p>

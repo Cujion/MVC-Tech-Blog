@@ -1,6 +1,6 @@
-const post_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-];
+// const post_id = window.location.toString().split('/')[
+//     window.location.toString().split('/').length - 1
+// ];
 
 const updatePost = async function (event) {
     event.preventDefault();
@@ -24,10 +24,9 @@ const updatePost = async function (event) {
     }
 };
 
-async function deletePost(event) {
-    event.preventDefault();
-
-    const response = await fetch(`/api/posts/${post_id}`, {
+async function deletePost() {
+    const postId = document.querySelector('input[name="post-id"]').value;
+    const response = await fetch(`/api/post/${postId}`, {
         method: 'DELETE'
     });
 
@@ -42,4 +41,4 @@ document.querySelector('#update-post')
     .addEventListener('submit', updatePost);
 
 document.querySelector('#delete-post')
-    .addEventListener('submit', deletePost)
+    .addEventListener('click', deletePost)
