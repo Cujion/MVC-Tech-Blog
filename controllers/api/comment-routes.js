@@ -34,11 +34,10 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    res.render('add-comment');
     try {
         const commentData = await Comment.create({
             comment_content: req.body.comment_content,
-            user_id: req.body.userId,
+            user_id: req.session.userId,
             post_id: req.body.post_id,
         });
         res.status(200).json(commentData);

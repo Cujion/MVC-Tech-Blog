@@ -62,20 +62,20 @@ router.get('/view', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.findAll({
       include: [{ model: User }, { model: Post }],
-      // where: {
-      //   post_id: 
-      // }
+      where: {
+        post_id: comment.id
+      }
     });
-    // if (commentData) {
+    if (commentData) {
       const comment = commentData.get({ plain: true });
       res.render('view-comment', {
         layout: 'dashboard',
         comment,
         loggedIn: req.session.loggedIn
       });
-    // } else {
-    //   res.status(404).end();
-    // }
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
     res.redirect('login');
   }

@@ -1,8 +1,11 @@
-const addComment = async function (event) {
-    event.preventDefault();
+const cardWrapper = document.querySelector('.card-wrapper');
 
+const addComment = async function () {
+    
+    const postId = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
     const postContentEl = document.querySelector('#post-content');
-    const postId = document.querySelector('input[name="post-id"]').value;
 
     const response = await fetch('/api/comment', {
         method: 'POST',
@@ -16,9 +19,12 @@ const addComment = async function (event) {
     if(response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert('Failed to add a new comment');
+        alert('Failed to add a new comment, comment must be at least 4 characters long.');
     }
 };
 
-document.querySelector('#post-comment')
-    .addEventListener('submit', addComment);
+cardWrapper.addEventListener('click', e => {
+    if(e.target.matches('#post-comment')){
+        addComment(e);
+    }
+});

@@ -1,4 +1,5 @@
 {{#each posts}}
+<section class="card-wrapper"></section>
 <div class="card w-90 mb-3">
     <a href="/api/post"></a>
     <input type="hidden" name="post-id" value="{{id}}">
@@ -8,11 +9,12 @@
         <p class="post-content">{{content}}</p>
     </div>
     <div class="card-footer text-muted d-flex justify-content-between">
-        <i><a href="/dashboard/add/{{id}}" id="add-comment" class="btn btn-success btn fas fa-sharp fa-solid fa-plus" type="submit"> Add Comment</a></i>
-        <i><a href="/dashboard/view" id="view-comment" class="btn btn-secondary fas fa-solid fa-eye" type="submit"> View Comments</a></i>
+        <i><a href="/dashboard/add/{{id}}" id="comment-add" class="btn btn-success btn fas fa-sharp fa-solid fa-plus"
+                type="submit"> Add Comment</a></i>
+        <i><a href="/dashboard/view" id="view-comment" class="btn btn-secondary fas fa-solid fa-eye" type="submit"> View
+                Comments</a></i>
         <h6 class="footer-content">Posted by: {{user.username}} on {{format_date createdAt}}</h6>
     </div>
 </div>
+</section>
 {{/each}}
-
-<script src="/js/comment.js"></script>
