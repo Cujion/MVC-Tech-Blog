@@ -1,7 +1,9 @@
 const cardWrapper = document.querySelector('.card-wrapper');
 // FUNCTION TO HANDLE ADDING COMMENTS
-const addComment = async function () {
+const addComment = async function (event) {
+    event.preventDefault();
     
+    const notify = document.querySelector('#notify');
     const postId = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
@@ -17,9 +19,9 @@ const addComment = async function () {
     });
 
     if(response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/');
     } else {
-        alert('Failed to add a new comment, comment must be at least 4 characters long.');
+        notify.classList.remove('hidden')
     }
 };
 // EVENT LISTENER FOR CLICK THAT MATCHES POST-COMMENT BUTTON

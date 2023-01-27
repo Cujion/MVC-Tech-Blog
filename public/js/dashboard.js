@@ -1,7 +1,8 @@
 // FUNCTION TO HANDLE CREATING A POST REQUEST
 const createPost = async function (event) {
     event.preventDefault();
-
+    
+    const notify = document.querySelector('#notify');
     const postTitleEl = document.querySelector('#post-title');
     const postBodyEl = document.querySelector('#post-content');
 
@@ -17,7 +18,7 @@ const createPost = async function (event) {
     if(response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert('Failed to post new blog');
+        notify.classList.remove('hidden')
     }
 };
 // EVENT LISTENER ON A SUBMIT BUTTON ON A FORM

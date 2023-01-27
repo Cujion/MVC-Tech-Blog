@@ -7,7 +7,7 @@
         <p class="post-content">{{post.content}}</p>
     </div>
     <div class="card-footer text-muted d-flex justify-content-end">
-        <h6 class="footer-content">Posted by: {{user.username}} on {{format_date post.createdAt}}</h6>
+        <h6 class="footer-content">Posted by: {{username}} on {{format_date post.createdAt}}</h6>
     </div>
 </div>
 {{#each post.comments}}

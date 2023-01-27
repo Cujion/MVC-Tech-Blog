@@ -42,7 +42,11 @@ router.get('/signup', (req, res) => {
 });
 // ROUTER FOR CREATE POST
 router.get('/post', (req, res) => {
-  res.render('create-post')
+  res.render('create-post', {
+    layout: 'dashboard',
+    loggedIn: req.session.loggedIn,
+    username: req.session.username
+  })
 });
 // ROUTER FOR FINDING POST BY ID
 router.get('/post/:id', (req, res) => {

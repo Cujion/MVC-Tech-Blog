@@ -42,7 +42,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     res.redirect('login');
   }
 });
-// ROUTER TO CREATE A POST ON DASHBOARD
+// ROUTER TO CREATE A COMMENT ON DASHBOARD
 router.get('/add/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);

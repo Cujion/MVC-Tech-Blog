@@ -1,12 +1,13 @@
 const cardWrapper = document.querySelector('.card-wrapper');
 // FUNCTION TO HANDLE UPDATE POST
 const updatePost = async function () {
+    const notify = document.querySelector('#notify');
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
     const postTitleEl = document.querySelector('#post-title');
     const postBodyEl = document.querySelector('#post-content');
-// FETCH REQUEST
+
     const response = await fetch(`/api/post/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -19,18 +20,19 @@ const updatePost = async function () {
     if(response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert('Failed to update blog post');
+        notify.classList.remove('hidden')
     }
 };
 // FUNCTION TO HANDLE WHEN A POST IS DELETED
 async function deletePost(e) {
     const postId = e.target.getAttribute('data-id');
+
     const response = await fetch(`/api/post/${postId}`, {
         method: 'DELETE'
     });
 
     if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
     } else {
         alert('Failed to delete blog post');
     }
