@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <title>The Tech Dashboard</title>
 </head>
-
+{{!-- DASHBOARD LAYOUT --}}
 <body>
   <header id="row">
     <nav class="navbar col-lg-12 d-flex justify-content-start py-4 bg-dark">
@@ -24,7 +24,7 @@
       <button class="btn-light btn-lg mx-2 border-primary mb-2"><a href="/dashboard">Dashboard</a></button>
       <button class="btn-light btn-lg mx-2 border-primary" id="login"><a href="/login">Login</a></button>
       {{/if}}
-      <h1 class="ml-5 mt-2 text-primary">The Tech Blog Dashboard</h1>
+      <h1 class="ml-5 mt-2 text-primary">{{#if loggedIn}}{{username}}{{/if}} Tech Blog Dashboard</h1>
     </nav>
   </header>
   <main class="min-vh-100 col-12 bg-primary p-4">

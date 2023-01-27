@@ -1,0 +1,26 @@
+{{!-- SINGLE POST PAGE LAYOUT WITH COMMENTS IF ANY --}}
+<div class="card w-90 mb-3">
+    <a href="/api/post"></a>
+    <input type="hidden" name="post-id" value="{{id}}">
+    <h3 class="card-header">{{post.title}}</h3>
+    <div class="card-body">
+        <p class="post-content">{{post.content}}</p>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-end">
+        <h6 class="footer-content">Posted by: {{user.username}} on {{format_date post.createdAt}}</h6>
+    </div>
+</div>
+{{#each post.comments}}
+<div class="card w-90 mb-3">
+    <a href="/api/comment"></a>
+    <input type="hidden" name="post-id" value="{{id}}">
+    <input type="hidden" name="comments-id" value="{{id}}">
+    <h3 class="card-header text-center">Comment</h3>
+    <div class="card-body">
+        <p class="post-content">{{comment_content}}</p>
+    </div>
+    <div class="card-footer text-muted d-flex justify-content-end">
+        <h6 class="footer-content">Commented by: {{user.username}} on {{format_date createdAt}}</h6>
+    </div>
+</div>
+{{/each}}

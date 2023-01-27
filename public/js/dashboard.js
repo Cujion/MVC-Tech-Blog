@@ -1,3 +1,4 @@
+// FUNCTION TO HANDLE CREATING A POST REQUEST
 const createPost = async function (event) {
     event.preventDefault();
 
@@ -19,6 +20,6 @@ const createPost = async function (event) {
         alert('Failed to post new blog');
     }
 };
-
+// EVENT LISTENER ON A SUBMIT BUTTON ON A FORM
 document.querySelector('#create-a-post')
     .addEventListener('submit', createPost);

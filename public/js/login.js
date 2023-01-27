@@ -1,8 +1,10 @@
+// FUNCTION TO HANDLE LOGIN REQUESTS
 const loginFormHandler = async function(event) {
-    event.preventDefault();
+  event.preventDefault();
   
-    const usernameEl = document.querySelector('#username-input-login');
-    const passwordEl = document.querySelector('#password-input-login');
+  const usernameEl = document.querySelector('#username-input-login');
+  const passwordEl = document.querySelector('#password-input-login');
+  const notify = document.querySelector('#notify');
   
     const response = await fetch('/api/user/login', {
       method: 'POST',
@@ -16,10 +18,10 @@ const loginFormHandler = async function(event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to login');
+      notify.classList.remove('hidden')
     }
   };
-  
+  // EVENT LISTENER FOR A SUBMIT BUTTON ON A FORM
   document
     .querySelector('#login-form')
     .addEventListener('submit', loginFormHandler);

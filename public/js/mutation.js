@@ -1,12 +1,12 @@
 const cardWrapper = document.querySelector('.card-wrapper');
-
+// FUNCTION TO HANDLE UPDATE POST
 const updatePost = async function () {
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
     const postTitleEl = document.querySelector('#post-title');
     const postBodyEl = document.querySelector('#post-content');
-
+// FETCH REQUEST
     const response = await fetch(`/api/post/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({
@@ -22,7 +22,7 @@ const updatePost = async function () {
         alert('Failed to update blog post');
     }
 };
-
+// FUNCTION TO HANDLE WHEN A POST IS DELETED
 async function deletePost(e) {
     const postId = e.target.getAttribute('data-id');
     const response = await fetch(`/api/post/${postId}`, {
@@ -35,7 +35,7 @@ async function deletePost(e) {
         alert('Failed to delete blog post');
     }
 };
-
+// EVENT LISTENER FOR A CLICK THAT MATCHES DELETE-POST ELSE IF UPDATE-POST BUTTON
 cardWrapper.addEventListener('click', e=>{
     if(e.target.matches('#delete-post')){
         deletePost(e)

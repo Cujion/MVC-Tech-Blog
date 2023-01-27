@@ -1,4 +1,4 @@
-
+// REQUIRED DEPENDENCIES
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -25,7 +25,7 @@ const sess = {
     db: sequelize,
   }),
 };
-
+// MIDDLEWARE
 app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers/'));
-
+// SETUP FOR SEQUELIZE
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
         console.log(`listen at http://localhost:${PORT}`);

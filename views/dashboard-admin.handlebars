@@ -1,3 +1,4 @@
+{{!-- USER DASHBOARD PAGE LAYOUT WITH ONLY THAT USERS POSTS IF ANY --}}
 <div class="card-wrapper">
 {{#each posts}}
 <div class="card w-90 mb-3">
@@ -11,7 +12,7 @@
                 Post</button></i>
         <i><a href="/dashboard/edit/{{id}}" id="edit-post" class="btn btn-warning btn-lg fas fa-sharp fa-pen" type="submit">
                 Update Post</a></i>
-        <h6 class="footer-content">Created by you and posted on: {{format_date createdAt}}</h6>
+        <h6 class="footer-content">Created by you and posted on: {{format_date createdAt}} - updated on: {{format_date updatedAt}}</h6>
     </div>
 </div>
 {{/each}}

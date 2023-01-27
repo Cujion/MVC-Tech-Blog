@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// ROUTER TO GET ALL POSTS ON DASHBOARD
 router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -15,13 +16,14 @@ router.get('/', withAuth, async (req, res) => {
     res.render('dashboard-admin', {
       layout: 'dashboard',
       posts,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      username: req.session.username
     })
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
+// ROUTER TO GET EDIT POST BY ID ON DASHBOARD
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
@@ -30,7 +32,8 @@ router.get('/edit/:id', withAuth, async (req, res) => {
       res.render('mutation-post', {
         layout: 'dashboard',
         post,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        username: req.session.username
       });
     } else {
       res.status(404).end();
@@ -39,39 +42,17 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     res.redirect('login');
   }
 });
-
+// ROUTER TO CREATE A POST ON DASHBOARD
 router.get('/add/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
     if (postData) {
       const post = postData.get({ plain: true });
       res.render('add-comment', {
-        layout: 'dashboard',
+        layout: 'main',
         post,
-        loggedIn: req.session.loggedIn
-      });
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.redirect('login');
-  }
-});
-
-router.get('/view', withAuth, async (req, res) => {
-  try {
-    const commentData = await Comment.findAll({
-      include: [{ model: User }, { model: Post }],
-      where: {
-        post_id: comment.id
-      }
-    });
-    if (commentData) {
-      const comment = commentData.get({ plain: true });
-      res.render('view-comment', {
-        layout: 'dashboard',
-        comment,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        username: req.session.username
       });
     } else {
       res.status(404).end();

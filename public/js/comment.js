@@ -1,5 +1,5 @@
 const cardWrapper = document.querySelector('.card-wrapper');
-
+// FUNCTION TO HANDLE ADDING COMMENTS
 const addComment = async function () {
     
     const postId = window.location.toString().split('/')[
@@ -22,7 +22,7 @@ const addComment = async function () {
         alert('Failed to add a new comment, comment must be at least 4 characters long.');
     }
 };
-
+// EVENT LISTENER FOR CLICK THAT MATCHES POST-COMMENT BUTTON
 cardWrapper.addEventListener('click', e => {
     if(e.target.matches('#post-comment')){
         addComment(e);

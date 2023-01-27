@@ -1,9 +1,11 @@
+// FUNCTION TO HANDLE SIGNUP REQUEST
 const signupFormHandler = async function(event) {
     event.preventDefault();
   
-    const usernameEl = document.querySelector('#username-input-signup')
+    const usernameEl = document.querySelector('#username-input-signup');
     const passwordEl = document.querySelector('#password-input-signup');
-  
+    const notify = document.querySelector('#notify');
+  // CHECK IF THERE IS A USERNAME AND PASSWORD
     if (usernameEl && passwordEl) {
     const response = await fetch('/api/user', {
       method: 'POST',
@@ -17,11 +19,11 @@ const signupFormHandler = async function(event) {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Failed to sign up');
+      notify.classList.remove('hidden')
     }
   }
 };
-  
+  // EVENT LISTENER FOR SUBMIT BUTTON PRESS ON FORM SUBMISSION
   document
     .querySelector('#signup-form')
     .addEventListener('submit', signupFormHandler);
