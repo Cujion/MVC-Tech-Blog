@@ -72,7 +72,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     try {
       const postData = await Post.destroy({ where: { id: req.params.id }});
       res.json(postData);
-      res.render('dashboard')
     } catch (err) {
       console.error(err);
       res.json(err);
